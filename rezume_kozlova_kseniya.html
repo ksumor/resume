@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Козлова Ксения — System Analyst</title>
+    <style>
+        :root {
+            --bg: #f4f5f7;
+            --paper: #ffffff;
+            --text: #17181c;
+            --muted: #70747d;
+            --line: #e7e8ec;
+            --accent: #635bff;
+            --accent-soft: #eeedff;
+            --dark: #1b1d24;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            line-height: 1.55;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: min(1120px, calc(100% - 32px));
+            margin: 32px auto;
+            background: var(--paper);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(25, 28, 40, .08);
+        }
+
+        .hero {
+            background: var(--dark);
+            color: white;
+            padding: 42px 48px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .hero-main {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .photo {
+            width: 108px;
+            height: 108px;
+            border-radius: 24px;
+            background: #30333d;
+            border: 1px solid rgba(255, 255, 255, .12);
+            overflow: hidden;
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9da1ad;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .eyebrow {
+            color: #aaa8ff;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1;
+            letter-spacing: -.04em;
+        }
+
+        .role {
+            margin-top: 12px;
+            font-size: 19px;
+            color: #d8d9df;
+        }
+
+        .role strong {
+            color: white;
+        }
+
+        .contact {
+            display: grid;
+            gap: 9px;
+            font-size: 14px;
+            color: #d2d4da;
+            text-align: right;
+        }
+
+        .contact a:hover {
+            color: white;
+        }
+
+        .salary {
+            display: inline-flex;
+            justify-content: flex-end;
+            margin-top: 7px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .content {
+            padding: 42px 48px 52px;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 50px;
+            padding-bottom: 38px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            color: var(--muted);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .summary {
+            font-size: 17px;
+            max-width: 730px;
+            margin: 0;
+            color: #33363e;
+        }
+
+        .highlight-box {
+            background: var(--accent-soft);
+            border-radius: 18px;
+            padding: 20px;
+            align-self: start;
+        }
+
+        .highlight-box .big {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -.03em;
+        }
+
+        .highlight-box p {
+            margin: 3px 0 0;
+            color: #57536f;
+            font-size: 13px;
+        }
+
+        section {
+            padding-top: 38px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+
+        h2 {
+            font-size: 25px;
+            margin: 0;
+            letter-spacing: -.025em;
+        }
+
+        .section-caption {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .experience {
+            position: relative;
+            margin-left: 9px;
+            padding-left: 29px;
+            border-left: 2px solid var(--line);
+        }
+
+        .job {
+            position: relative;
+            padding-bottom: 34px;
+        }
+
+        .job:last-child {
+            padding-bottom: 0;
+        }
+
+        .job::before {
+            content: "";
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--accent);
+            left: -36px;
+            top: 7px;
+            box-shadow: 0 0 0 5px white, 0 0 0 6px var(--line);
+        }
+
+        .job-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .company {
+            font-size: 19px;
+            font-weight: 800;
+        }
+
+        .position {
+            margin-top: 2px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .date {
+            color: var(--muted);
+            white-space: nowrap;
+            font-size: 13px;
+            padding-top: 4px;
+        }
+
+        .location {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        ul {
+            margin: 15px 0 13px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 6px 0;
+            color: #3d4048;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: #f2f3f5;
+            border: 1px solid #e7e8eb;
+            border-radius: 999px;
+            padding: 4px 9px;
+            font-size: 11px;
+            color: #555861;
+        }
+
+        .tag.accent {
+            background: var(--accent-soft);
+            border-color: transparent;
+            color: #5149d9;
+            font-weight: 700;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .project {
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            padding: 21px;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .project:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(20, 22, 30, .07);
+        }
+
+        .project h3 {
+            margin: 0 0 5px;
+            font-size: 17px;
+        }
+
+        .project p {
+            margin: 0;
+            color: #62656d;
+            font-size: 14px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 42px;
+        }
+
+        .education-item {
+            border-top: 1px solid var(--line);
+            padding: 17px 0;
+        }
+
+        .education-item:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .education-item h3 {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .education-item .sub {
+            color: var(--accent);
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .education-item p {
+            color: #666971;
+            font-size: 14px;
+            margin: 6px 0 0;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .skill {
+            background: #f7f7f8;
+            border-radius: 15px;
+            padding: 16px;
+        }
+
+        .skill b {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .skill span {
+            color: #60636b;
+            font-size: 13px;
+        }
+
+        .footer {
+            margin-top: 44px;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .print-btn {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            border: 0;
+            background: var(--dark);
+            color: white;
+            border-radius: 999px;
+            padding: 12px 17px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .16);
+        }
+
+        .print-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 800px) {
+
+            .hero,
+            .intro,
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                text-align: left;
+            }
+
+            .hero,
+            .content {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .hero-main {
+                align-items: flex-start;
+            }
+
+            .job-top {
+                display: block;
+            }
+
+            .date {
+                margin-top: 5px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 9mm;
+            }
+
+            body {
+                background: white;
+                font-size: 11px;
+            }
+
+            .page {
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .hero {
+                padding: 25px 30px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .content {
+                padding: 25px 30px 30px;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            section {
+                padding-top: 24px;
+            }
+
+            .job {
+                break-inside: avoid;
+            }
+
+            .project,
+            .education-item,
+            .skill {
+                break-inside: avoid;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <header class="hero">
+            <div class="hero-main">
+                <div class="photo">
+                    <!--
+                ДОБАВЬ ФОТО:
+                1. Положи файл рядом с этим HTML.
+                2. Назови его photo.jpg.
+                3. Раскомментируй строку ниже.
+                -->
+
+                    <img src="photo.jpg" alt="Козлова Ксения">
+                </div>
+
+                <div>
+                    <div class="eyebrow">IT • FINTECH • ANALYTICS</div>
+                    <h1>Козлова Ксения</h1>
+                    <div class="role"><strong>Системный аналитик</strong> / QA Engineer</div>
+                    <div class="role" style="font-size:14px; margin-top:5px;">Junior / Junior+ · Новосибирск</div>
+                </div>
+            </div>
+
+            <div class="contact">
+                <a href="tel:+79137456025">+7 (913) 745-60-25</a>
+                <a href="mailto:kozlovakan@yandex.ru">kozlovakan@yandex.ru</a>
+                <a href="https://career.habr.com/kozlovaka" target="_blank">Habr Career ↗</a>
+                <span>Telegram: @morozfire</span>
+                <span class="salary">Ожидаю от 60 000 ₽</span>
+            </div>
+        </header>
+
+        <main class="content">
+
+            <div class="intro">
+                <div>
+                    <div class="section-title">Профиль</div>
+                    <p class="summary">
+                        IT-специалист с опытом в разработке, системном анализе, тестировании и AI-проектах.
+                        Имею техническое образование в области программирования и коммерческий опыт работы с
+                        информационными системами - от разработки и работы с базами данных до анализа требований,
+                        документации, интеграций и тестирования.
+                    </p>
+                    <p></p>
+                    <p class="summary">
+                        Работала с финтех-системами, участвовала в разработке и сопровождении программных решений,
+                        занималась AI-интеграциями и преподаванием программирования. Умею быстро погружаться в
+                        незнакомую
+                        предметную область, разбираться в существующей архитектуре и данных, взаимодействовать с
+                        разработчиками
+                        и тестировщиками и переводить бизнес-задачи в понятные технические решения.
+                    </p>
+                    <p></p>
+                    <p class="summary">
+                        Сейчас развиваюсь в направлении системного анализа, сочетая технический бэкграунд
+                        разработчика с опытом работы с требованиями, информационными системами, тестированием и
+                        современными AI-инструментами.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <div class="big">4+ года</div>
+                    <p>в IT, включая разработку, аналитику, тестирование и AI-проекты</p>
+                </div>
+            </div>
+
+            <section>
+                <div class="section-heading">
+                    <h2>Опыт работы</h2>
+                    <span class="section-caption">2023 — настоящее время</span>
+                </div>
+
+                <div class="experience">
+
+                    <article class="job">
+                        <div class="job-top">
+                            <div>
+                                <div class="company">ЦФТ — Центр финансовых технологий</div>
+                                <div class="position">Системный аналитик / инженер по тестированию</div>
+                                <div class="location">Новосибирск · РБС, направление банковских карт</div>
+                            </div>
+                            <div class="date">Июн 2025 — Дек 2025</div>
+                        </div>
+
+                        <ul>
+                            <li>Участие в анализе и проработке задач в рамках развития информационных систем.</li>
+                            <li>Подготовка, актуализация и ведение технической документации.</li>
+                            <li>Работа с Jira и Confluence в рамках командных процессов.</li>
+                            <li>Ручное тестирование реализованной функциональности и подготовка тестовых сценариев.</li>
+                            <li>Разработка и поддержка автоматизированных тестов.</li>
+                            <li>Работа с SQL и PL/SQL для анализа и проверки данных.</li>
+                            <li>Работа с интеграциями на Java и взаимодействие с разработчиками и тестировщиками.</li>
+                            <li>Анализ возникающих проблем и участие в поиске и устранении причин.</li>
+                            <li>Помощь команде во внедрении AI-инструментов для поиска, анализа и подготовки технической
+                                документации.</li>
+                        </ul>
+
+                        <div class="tags">
+                            <span class="tag accent">System Analysis</span>
+                            <span class="tag accent">QA</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">PL/SQL</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Jira</span>
+                            <span class="tag">Confluence</span>
+                            <span class="tag">AI</span>
+                        </div>
+                    </article>
+
+                    <article class="job">
+                        <div class="job-top">
+                            <div>
+                                <div class="company">KIBERone</div>
+                                <div class="position">Преподаватель программирования</div>
+                                <div class="location">Новосибирск</div>
+                            </div>
+                            <div class="date">Сен 2024 — настоящее время</div>
+                        </div>
+
+                        <ul>
+                            <li>Преподавание программирования детям 6–15 лет.</li>
+                            <li>Практическое обучение основам разработки и программирования.</li>
+                            <li>Адаптация учебного материала под уровень учащихся.</li>
+                            <li>Участие в IT-мероприятиях и конференциях.</li>
+                        </ul>
+
+                        <div class="tags">
+                            <span class="tag">C#</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Lua</span>
+                            <span class="tag">Unity2D</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                    </article>
+
+                    <article class="job">
+                        <div class="job-top">
+                            <div>
+                                <div class="company">MBA MI Innovation</div>
+                                <div class="position">Промпт-инженер</div>
+                                <div class="location">Мадрид</div>
+                            </div>
+                            <div class="date">Апр 2024 — Авг 2024</div>
+                        </div>
+
+                        <ul>
+                            <li>Разработка и тестирование Telegram-ботов с использованием моделей OpenAI.</li>
+                            <li>Проектирование, тестирование и оптимизация промптов.</li>
+                            <li>Интеграция AI-функциональности в программные решения.</li>
+                            <li>Сбор и анализ метрик использования ботов.</li>
+                            <li>Подготовка отчётности и презентация результатов.</li>
+                        </ul>
+
+                        <div class="tags">
+                            <span class="tag accent">AI</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">OpenAI</span>
+                            <span class="tag">API</span>
+                            <span class="tag">JSON</span>
+                            <span class="tag">Postman</span>
+                            <span class="tag">Testing</span>
+                        </div>
+                    </article>
+
+                    <article class="job">
+                        <div class="job-top">
+                            <div>
+                                <div class="company">ИНГГ СО РАН им. А. А. Трофимука</div>
+                                <div class="position">Разработчик</div>
+                                <div class="location">Новосибирск</div>
+                            </div>
+                            <div class="date">Сен 2023 — Июн 2024</div>
+                        </div>
+
+                        <ul>
+                            <li>Перевод существующего каталога сейсмических событий в SQL-базу данных.</li>
+                            <li>Разработка клиентской и серверной частей информационной системы.</li>
+                            <li>Интеграция существующего вычислительного алгоритма в информационную систему.</li>
+                            <li>Реализация взаимодействия приложения с базой данных.</li>
+                            <li>Анализ требований, техническая документация и UML-диаграммы.</li>
+                        </ul>
+
+                        <div class="tags">
+                            <span class="tag accent">C#</span>
+                            <span class="tag">.NET</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">UML</span>
+                            <span class="tag">Databases</span>
+                        </div>
+                    </article>
+
+                    <article class="job">
+                        <div class="job-top">
+                            <div>
+                                <div class="company">Креайтивика</div>
+                                <div class="position">Преподаватель программирования</div>
+                                <div class="location">Новосибирск</div>
+                            </div>
+                            <div class="date">Фев 2024 — Июн 2024</div>
+                        </div>
+
+                        <ul>
+                            <li>Преподавание программирования и разработки проектов.</li>
+                            <li>Работа с Unity3D, Minecraft Education и робототехникой.</li>
+                            <li>Коммуникация с родителями и сопровождение учеников.</li>
+                        </ul>
+
+                        <div class="tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Unity3D</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section>
+                <div class="section-heading">
+                    <h2>Проекты</h2>
+                    <span class="section-caption">Самостоятельная разработка</span>
+                </div>
+
+                <div class="projects">
+                    <div class="project">
+                        <h3>Telegram-боты с AI-функциональностью</h3>
+                        <p>
+                            Разработка Telegram-ботов на Python, работа с Telegram Bot API
+                            и внешними API, JSON, пользовательскими сценариями,
+                            интеграцией AI-функциональности, тестированием и отладкой.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Telegram Bot API</span>
+                            <span class="tag">OpenAI</span>
+                            <span class="tag">API</span>
+                            <span class="tag">JSON</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="two-col">
+                <div>
+                    <div class="section-heading">
+                        <h2>Образование</h2>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>ТУСУР</h3>
+                        <div class="sub">Бизнес-информатика · 38.03.05</div>
+                        <p>Сен 2024 — настоящее время · Факультет дистанционного образования</p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>ВКИ НГУ</h3>
+                        <div class="sub">Информационные системы и программирование</div>
+                        <p>
+                            Сен 2020 — Июн 2024 · Среднее профессиональное образование.
+                            Квалификация — программист. Средний балл 4.77, диплом с отличием.
+                        </p>
+                        <p>
+                            Дипломный проект: десктопное приложение для визуализации
+                            «пауз молчания» между сильными землетрясениями совместно с ИНГГ СО РАН.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-heading">
+                        <h2>Доп. образование</h2>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>ШИФТ — Системная аналитика</h3>
+                        <div class="sub">Март 2025 — Май 2025</div>
+                        <p>
+                            Требования, методологии разработки, моделирование бизнес-процессов,
+                            UI/UX и основы баз данных.
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>Интенсив ШИФТ — Системная аналитика</h3>
+                        <div class="sub">Февраль 2024</div>
+                        <p>
+                            Роль системного аналитика, методологии разработки,
+                            типы требований и методы их сбора.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-heading">
+                    <h2>Навыки</h2>
+                    <span class="section-caption">Tech stack</span>
+                </div>
+
+                <div class="skills">
+                    <div class="skill">
+                        <b>Системный анализ</b>
+                        <span>Сбор и анализ требований · Техническая документация · UML · Моделирование бизнес-процессов
+                            · Анализ информационных систем</span>
+                    </div>
+
+                    <div class="skill">
+                        <b>Тестирование</b>
+                        <span>Ручное тестирование · Автотесты · Тест-кейсы · API-тестирование · Postman</span>
+                    </div>
+
+                    <div class="skill">
+                        <b>Программирование</b>
+                        <span>Python · C# · SQL · PL/SQL · Java · C++</span>
+                    </div>
+
+                    <div class="skill">
+                        <b>Инструменты</b>
+                        <span>Jira · Confluence · Git · Postman · .NET</span>
+                    </div>
+
+                    <div class="skill">
+                        <b>AI</b>
+                        <span>OpenAI API · Prompt Engineering · Интеграция AI-инструментов в рабочие процессы</span>
+                    </div>
+
+                    <div class="skill">
+                        <b>Дополнительно</b>
+                        <span>MySQL · JSON · HTML · CSS · Unity · Английский язык — технический</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="footer">
+                <span>Козлова Ксения · System Analyst</span>
+                <span>Обновлено в 2026</span>
+            </div>
+
+        </main>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">Сохранить / PDF</button>
+
+</body>
+
+</html>
